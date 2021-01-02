@@ -3,8 +3,8 @@ package com.vegdev.vegacademy.presenter.login
 import android.content.Context
 import android.content.Intent
 import com.vegdev.vegacademy.contract.login.LoginContract
-import com.vegdev.vegacademy.model.data.dataholders.UserDataHolder
 import com.vegdev.vegacademy.helpers.utils.Utils
+import com.vegdev.vegacademy.model.data.dataholders.UserDataHolder
 import com.vegdev.vegacademy.view.main.MainActivity
 
 class WelcomePresenter(
@@ -30,7 +30,8 @@ class WelcomePresenter(
         context.startActivity(intent)
     }
 
-    private suspend fun buildTitle(): String = "Hola,  " + Utils.getFirstWord(UserDataHolder.getUserData().username)
+    private suspend fun buildTitle(): String =
+        "Hola,  " + Utils.getFirstWord(UserDataHolder.getUserData().username)
 
     private fun buildSubtitle(): String {
         return if (UserDataHolder.currentUser.isOrg) {

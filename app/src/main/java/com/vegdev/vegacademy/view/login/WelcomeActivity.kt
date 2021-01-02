@@ -42,7 +42,6 @@ class WelcomeActivity : AppCompatActivity(), LoginContract.View.Welcome {
     override fun bindTexts(title: String, subtitle: String) {
         titleTxt?.text = title
         subtitleTxt?.text = subtitle
-
     }
 
     private fun bindView() {

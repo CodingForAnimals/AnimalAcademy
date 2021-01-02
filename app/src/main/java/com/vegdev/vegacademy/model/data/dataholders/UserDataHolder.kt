@@ -1,6 +1,7 @@
 package com.vegdev.vegacademy.model.data.dataholders
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.vegdev.vegacademy.model.data.models.users.User
 import kotlinx.coroutines.tasks.await
@@ -51,6 +52,14 @@ object UserDataHolder {
             }
         }
         return User()
+    }
+
+    fun onLogIn(user: DocumentSnapshot?) {
+        val userData = user?.toObject(User::class.java)
+        userData?.let {
+            isInitialized = true
+            currentUser = userData
+        }
     }
 
 

@@ -7,11 +7,13 @@ import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GetTokenResult
+import com.google.firebase.firestore.FirebaseFirestore
 import com.vegdev.vegacademy.contract.login.LoginContract
 import com.vegdev.vegacademy.model.data.dataholders.UserDataHolder
 import com.vegdev.vegacademy.helpers.utils.Utils
 import com.vegdev.vegacademy.view.login.CreateUserActivity
 import com.vegdev.vegacademy.view.login.WelcomeActivity
+import kotlinx.coroutines.coroutineScope
 
 class StartPresenter(val context: Context, val iView: LoginContract.View.Login) :
     LoginContract.Actions.Login {
@@ -51,15 +53,18 @@ class StartPresenter(val context: Context, val iView: LoginContract.View.Login) 
         }
     }
 
-    override fun signInIntent(email: String, password: String) {
+    override suspend fun signInIntent(email: String, password: String) {
         if (email != "" && password != "") {
             iView.showProgress()
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-                iView.hideProgress()
-                val intent = Intent(context, WelcomeActivity::class.java)
-                context.startActivity(intent)
-                Utils.overrideEnterAndExitTransitions(context as Activity)
+                FirebaseFirestore.getInstance().collection("users").document(it.user?.uid!!).get().addOnSuccessListener { user ->
+                    UserDataHolder.onLogIn(user)
+                    iView.hideProgress()
+                    val intent = Intent(context, WelcomeActivity::class.java)
+                    context.startActivity(intent)
+                    Utils.overrideEnterAndExitTransitions(context as Activity)
 
+                }
             }.addOnFailureListener {
 
                 Utils.createToast(context, "Error al iniciar sesión")

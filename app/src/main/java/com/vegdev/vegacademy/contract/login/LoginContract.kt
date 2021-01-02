@@ -49,7 +49,7 @@ interface LoginContract {
         interface Login {
             fun createFacebookLoginIntent()
             fun onActivityResult(requestCode: Int, resultCode: Int)
-            fun signInIntent(email: String, password: String)
+            suspend fun signInIntent(email: String, password: String)
             fun goToCreateUserActivity()
         }
         interface CreateUser {

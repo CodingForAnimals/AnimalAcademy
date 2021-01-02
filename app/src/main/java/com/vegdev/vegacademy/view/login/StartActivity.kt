@@ -5,12 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.TextViewCompat
+import androidx.lifecycle.lifecycleScope
 import com.vegdev.vegacademy.R
 import com.vegdev.vegacademy.contract.login.LoginContract
 import com.vegdev.vegacademy.presenter.login.StartPresenter
 import com.vegdev.vegacademy.helpers.utils.Utils
+import com.vegdev.vegacademy.model.data.dataholders.UserDataHolder
 import kotlinx.android.synthetic.main.activity_create_user.logo
 import kotlinx.android.synthetic.main.activity_start.*
+import kotlinx.coroutines.launch
 import android.util.Pair as UtilPair
 
 class StartActivity : AppCompatActivity(), LoginContract.View.Login {
@@ -20,6 +24,8 @@ class StartActivity : AppCompatActivity(), LoginContract.View.Login {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
+
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(textView3, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM)
 
         logo.setOnTouchListener(Utils.getResizerOnTouchListener(logo))
         logo.setOnClickListener { }
@@ -35,10 +41,13 @@ class StartActivity : AppCompatActivity(), LoginContract.View.Login {
 
         login_btn.setOnTouchListener(Utils.getResizerOnTouchListener(login_btn))
         login_btn.setOnClickListener {
-            presenter.signInIntent(
-                email_txt.text.toString().trim(),
-                password_txt.text.toString().trim()
-            )
+            lifecycleScope.launch {
+                presenter.signInIntent(
+                    email_txt.text.toString().trim(),
+                    password_txt.text.toString().trim()
+                )
+                UserDataHolder.getUserData()
+            }
         }
     }
 
