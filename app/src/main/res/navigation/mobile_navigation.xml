@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_news"
-        android:name="com.vegdev.vegacademy.view.news.NewsFragment"
+        android:name="com.codingforanimals.animalacademy.view.news.NewsFragment"
         android:label="Novedades"
         tools:layout="@layout/news">
         <action
@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/navigation_learning"
-        android:name="com.vegdev.vegacademy.view.learning.CategoriesFragment"
+        android:name="com.codingforanimals.animalacademy.view.learning.CategoriesFragment"
         android:label="Aprendizaje"
         tools:layout="@layout/categories">
         <action
@@ -46,7 +46,7 @@
 
     <fragment
         android:id="@+id/navigation_element"
-        android:name="com.vegdev.vegacademy.view.learning.ElementsFragment"
+        android:name="com.codingforanimals.animalacademy.view.learning.ElementsFragment"
         android:label="Videos"
         tools:layout="@layout/element">
         <argument
@@ -66,7 +66,7 @@
 
     <fragment
         android:id="@+id/navigation_webview"
-        android:name="com.vegdev.vegacademy.view.main.WebFragment"
+        android:name="com.codingforanimals.animalacademy.view.main.WebFragment"
         android:label="WebView"
         tools:layout="@layout/web">
         <argument
@@ -77,7 +77,7 @@
 
     <fragment
         android:id="@+id/navigation_recipe_details"
-        android:name="com.vegdev.vegacademy.view.recipes.details.RecipeDetailsFragment"
+        android:name="com.codingforanimals.animalacademy.view.recipes.details.RecipeDetailsFragment"
         android:label="Receta"
         tools:layout="@layout/recipe_details">
         <argument
@@ -96,19 +96,19 @@
 
     <fragment
         android:id="@+id/navigation_donations"
-        android:name="com.vegdev.vegacademy.view.main.DonationsFragment"
+        android:name="com.codingforanimals.animalacademy.view.main.DonationsFragment"
         android:label="Donaciones"
         tools:layout="@layout/donations" />
 
     <fragment
         android:id="@+id/navigation_recipe_suggestion"
-        android:name="com.vegdev.vegacademy.view.recipes.RecipeSuggestionFragment"
+        android:name="com.codingforanimals.animalacademy.view.recipes.RecipeSuggestionFragment"
         android:label="Sugerir Receta"
         tools:layout="@layout/recipe_suggestion" />
 
     <fragment
         android:id="@+id/nagivation_recipes"
-        android:name="com.vegdev.vegacademy.view.recipes.RecipesFragment"
+        android:name="com.codingforanimals.animalacademy.view.recipes.RecipesFragment"
         android:label="Mejores Recetas"
         tools:layout="@layout/recipes">
         <action
@@ -121,7 +121,7 @@
 
     <fragment
         android:id="@+id/navigation_org_profile"
-        android:name="com.vegdev.vegacademy.view.profiles.ProfileOrgFragment"
+        android:name="com.codingforanimals.animalacademy.view.profiles.ProfileOrgFragment"
         android:label="Organización"
         tools:layout="@layout/profile_org"/>
 
