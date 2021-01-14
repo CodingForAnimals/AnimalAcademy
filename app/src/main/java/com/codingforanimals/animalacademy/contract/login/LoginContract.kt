@@ -22,20 +22,11 @@ interface LoginContract {
         interface CreateUser {
             fun showProgressbar()
             fun hideProgressbar()
-            fun toCreateOrgActivity()
         }
         interface Welcome {
             fun bindTexts(title: String, subtitle: String)
             fun onBackPressed()
         }
-
-        interface CreateOrg {
-            fun makeToast(message: String)
-            fun startWelcomeActivity()
-            fun showProgressbar()
-            fun hideProgressbar()
-        }
-
     }
 
     interface Actions {
@@ -58,12 +49,5 @@ interface LoginContract {
             fun shouldExit(intent: Intent?)
             fun startMainActivity()
         }
-
-        interface CreateOrg {
-            fun createOrgIntent(name: String, email: String, password: String, confPassword: String)
-
-        }
-
-
     }
 }
